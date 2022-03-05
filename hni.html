@@ -1,0 +1,77 @@
+{% load static %}
+<!doctype html>
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Welcome</title>
+	</head>
+	<style type="text/css">
+	*{
+		box-sizing: border-box;
+	}
+		.HNI{
+			color: red;
+			text-align: center;
+			background-color: #abc111;
+		}
+		.meetings{
+			border: 2px solid black;
+			padding: 20px;
+			margin: 10px;
+		}
+		.WM-name{
+			color: blue;
+			font-size: 24px;
+		}
+		.button {
+           border: none;
+           color: black;
+           padding: 15px 32px;
+           text-align: center;
+           text-decoration: none;
+           display: inline-block;
+           font-size: 16px;
+           border-radius: 10px;
+          }
+          .accept-button{
+          	background-color: green;
+          }
+           .reject-button{
+          	background-color: red;
+          }
+           .reschedule-button{
+          	background-color: blue;
+          }
+	</style>
+	<body>
+		<!-- <?php include 'timedate.php';?> -->
+		<h1 class="HNI">HNI Mr.Rao</h1>
+		<h3>Meetings Scheduled</h3>
+	    <div class="meetings">
+	    	<div class="your-meetings">
+                {% for item in alldetails %}
+	    		<p class="WM-name">wealth manager {{item.name}}</p>
+	    		<p class="time">{{item.time}}</p>
+	    		<button id="accept" onclick="accept()" class="button accept-button">accept</button>
+	    		<button id="reject" onclick="reject()"  class="button reject-button">reject</button>
+	    		<button id="reschedule" onclick="resc()" class="button reschedule-button">reschedule</button>
+                {% endfor %}
+	    	</div>
+	    </div>
+	    <script type="text/javascript">
+	    	var ac=document.getElementById("accept");
+	    	var re=document.getElementById("reject");
+	    	var res=document.getElementById("reschedule");
+             function accept(){
+             	alert("meeting accepted");
+             }
+             function reject(){
+             	alert("meeting rejected");
+             }
+             function resc(){
+             	prompt("enter reschedule time","")
+             }
+	    </script>
+	</body>
+	</html>

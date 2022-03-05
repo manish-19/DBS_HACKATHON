@@ -1,0 +1,141 @@
+{% load static %}
+<html>
+<head>
+<title>Wealth_Manager</title>
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700,900" rel="stylesheet">
+<style>
+body {
+font-family: 'Raleway', sans-serif;
+font-weight: 400;
+color: #fff;
+letter-spacing: 1px;
+}
+
+.container {
+background-color: #fafafa;
+margin: 100px;
+box-shadow: 10px 15px 20px rgba(0, 0, 0, .1);
+display: grid;
+grid-template-columns: 40% 60%;
+} 
+
+.container-form {
+padding: 20px 0;
+margin: 0 auto;
+color: #000;
+}
+
+.container-time {
+background-color: rgba(0, 0, 0, .95);
+padding: 50px;
+outline: 3px dashed #998100;
+outline-offset: -30px;
+text-align: center;
+}
+
+.heading {
+font-size: 35px;
+text-transform: uppercase;
+}
+
+.heading-days {
+color:#998100;
+font-size: 30px;
+
+}
+
+.heading-phone {
+font-size: 20px;
+}
+
+form {
+display: grid;
+grid-row-gap: 20px;
+}
+form p {
+font-weight: 600;
+}
+.form-field {
+display: flex;
+justify-content: space-between;
+}
+
+input,select {
+padding: 10px 15px;
+}
+h1{
+    color: #000;
+    text-align: center;
+    margin-top: 10px;
+}
+</style>
+</head>
+<body>
+    <h1>
+    {% if messages %}
+    {% for message in messages %}
+    {% if message.tags == 'success' %}
+        {{ message }}
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    </h1>
+
+<div class="container">
+<div class="container-time">
+<h2 class="heading">Appointment</h2>
+<h3 class="heading-days">Monday-Wednesday</h3>
+<p>7am - 11am </p>
+<p>11am - 10pm </p>
+
+<h3 class="heading-days">Wednesday-Saturday</h3>
+<p>9am - 1am </p>
+<p>1am - 10pm </p>
+
+<hr>
+</div>
+<div class="container-form">
+<form method="post" enctype="multipart/form-data" action="{% url 'book' %}">{% csrf_token %}
+<h2 class="heading heading-yellow">Reservation CLIENT(HNI)</h2>
+
+<div class="form-field">
+<p>Your Name</p>
+<input type="text" placeholder="Wealth Manager Name" name="name">
+</div>
+<div class="form-field">
+<p>Your email</p>
+<input type="email" placeholder="E-mail Id" name="email">
+</div>
+<div class="form-field">
+<p>Phone No.</p>
+<input type="tel" placeholder="Phone Number" name="phno">
+</div>
+<div class="form-field">
+<p>Date</p>
+<input type="date" name="date">
+</div>
+<div class="form-field">
+<p>Time</p>
+<input type="time" name="time">
+</div>
+<!-- <div class="form-field">
+<p>Client?</p>
+<select name="select" id="#">
+<option value="1">1 Client</option>
+<option value="2">2 Client</option>
+<option value="3">3 Client</option>
+<option value="4">4 Client</option>
+<option value="5">5 Client</option>
+<option value="5+">5+ Clients</option>
+</select>
+</div> -->
+
+<button type="submit" class="btn">Submit</button>
+</form>
+</div>
+</div>
+
+
+</body>
+</html>
